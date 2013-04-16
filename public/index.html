@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>uploader</title>
+	<style type="text/css">
+		form {
+			width:470px;
+		}
+		#progress {
+			width:0%;
+			height:5px;
+			background:blue;
+		}
+	</style>
+</head>
+<body>
+
+
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<label for="id">id:</label><input type="text" name="id" id="id" />
+		<label for="file">file:</label><input type="file" name="file" id="file" /><br>
+		<div id="progress"></div>
+		<input type="submit" />
+	</form>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/uploader.js"></script>
+	<script type="text/javascript">
+      
+    $("form").on("submit",function( ev ){
+
+      var $progress = $("#progress").css("width","0%");
+      //$( "input[type!='submit'],select", $(this) ).upload( "/upload",{
+      $(this).uploadForm({
+        success:function( text ){
+
+          var result = $.parseJSON( text );
+
+          console.log( "response from server:" );
+          console.log( "id:" + result.id + " fileName:" + result.fileName + " success:" + result.success );
+          alert("success");
+        },
+        fail:function(){
+          $progress.css( "width", "0%" );
+          console.log( "fail" );
+          alert("fail");
+        },
+        progress:function( ev ){
+          var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
+          $progress.css("width",ratio);
+          console.log( ratio );
+        }
+      });
+
+      ev.preventDefault();
+    });
+	</script>
+</body>
+</html>
+
