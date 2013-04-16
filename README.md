@@ -6,6 +6,7 @@ This is html5 uploader,it support ie9+、chrome、firefox...
 ###Send a form by ajax:
 The method only submit one form now.
 
+
    $("form").uploadForm({
      success:function( text ){
        console.log( "response from server:" + text );
@@ -41,6 +42,7 @@ code:
        console.log( ratio );
      }
    });
+
 
 ##Dependency
 
