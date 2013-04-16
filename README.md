@@ -21,7 +21,7 @@ The method only submit one form now.
 	});
 
 ###Send many fields:
-html:
+####html:
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="id">id:</label><input type="text" name="id" id="id" />
@@ -30,18 +30,18 @@ html:
         <input type="submit" />
     </form>
 
-code:
+####code:
 
-   $( "input[name='file'],input[name='id']" ).upload( "/upload",{
-
-     success:function( text ){
-       console.log( "response from server:" + text );
-     },
-     progress:function( ev ){
-       var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
-       console.log( ratio );
-     }
-   });
+	$( "input[name='file'],input[name='id']" ).upload( "/upload",{
+	
+	  success:function( text ){
+	    console.log( "response from server:" + text );
+	  },
+	  progress:function( ev ){
+	    var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
+	    console.log( ratio );
+	  }
+	});
 
 
 ##Dependency
