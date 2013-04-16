@@ -7,18 +7,18 @@ This is html5 uploader,it support ie9+、chrome、firefox...
 The method only submit one form now.
 
 
-   $("form").uploadForm({
-     success:function( text ){
-       console.log( "response from server:" + text );
-     },
-     fail:function(){
-
-     },
-     progress:function( ev ){
-       var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
-       console.log( ratio );
-     }
-   });
+	$("form").uploadForm({
+	  success:function( text ){
+	    console.log( "response from server:" + text );
+	  },
+	  fail:function(){
+	
+	  },
+	  progress:function( ev ){
+	    var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
+	    console.log( ratio );
+	  }
+	});
 
 ###Send many fields:
 html:
