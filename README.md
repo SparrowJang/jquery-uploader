@@ -1,6 +1,6 @@
 ##Introduction
 
-This is html5 uploader,it support ie9+、chrome、firefox...
+This is html5 uploader,it support ie10+、chrome、firefox...
 
 ##Usage
 ###Send a form by ajax:
