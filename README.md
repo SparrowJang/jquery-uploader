@@ -1,8 +1,16 @@
 ##Introduction
 
-This is html5 uploader,it support ie10+、chrome、firefox...
+This is ajax uploader,it support ie7+、chrome、firefox...
 
 ##Usage
+
+###The method Support:
+The IE7、IE8 and IE9 will use iframe uploader to replace.
+
+	IE7+
+	firefox
+	chrome
+
 ###Send a form by ajax:
 The method only submit one form now.
 
@@ -20,7 +28,23 @@ The method only submit one form now.
 	  }
 	});
 
+If you use IE7~9,it only support success parameter:
+
+
+	$("form").uploadForm({
+	  success:function( text ){
+	    console.log( "response from server:" + text );
+	  }
+	});
+
 ###Send many fields:
+
+###The method Support:
+
+	IE10+
+	firefox
+	chrome
+
 ####html:
 
     <form action="/upload" method="post" enctype="multipart/form-data">
