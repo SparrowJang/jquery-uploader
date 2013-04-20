@@ -4,7 +4,7 @@ This is ajax uploader,it support ie7+、chrome、firefox...
 
 ##Usage
 
-###The method Support:
+###The method support:
 The IE7、IE8 and IE9 will use iframe uploader to replace.
 
 	IE7+
@@ -39,7 +39,7 @@ If you use IE7~9,it only support success parameter:
 
 ###Send many fields:
 
-###The method Support:
+###The method support:
 
 	IE10+
 	firefox
