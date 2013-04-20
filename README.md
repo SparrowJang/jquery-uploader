@@ -5,7 +5,7 @@ This is ajax uploader,it support ie7+、chrome、firefox...
 ##Usage
 
 ###The method support:
-The IE7、IE8 and IE9 will use iframe uploader to replace.
+If you use IE7、IE8 and IE9, they will use iframe uploader to replace.
 
 	IE7+
 	firefox
@@ -28,7 +28,7 @@ The method only submit one form now.
 	  }
 	});
 
-If you use IE7~9,it only support success parameter:
+If you use IE7~9,they only support success parameter:
 
 
 	$("form").uploadForm({
