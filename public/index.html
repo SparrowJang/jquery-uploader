@@ -30,6 +30,7 @@
 	<script type="text/javascript">
       
     $("form").on("submit",function( ev ){
+      ev.preventDefault();
 
       var $progress = $("#progress").css("width","0%");
       //$( "input[type!='submit'],select", $(this) ).upload( "/upload",{
@@ -54,7 +55,6 @@
         }
       });
 
-      ev.preventDefault();
     });
 	</script>
 </body>

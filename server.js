@@ -13,9 +13,11 @@ app.post('/upload',function( req, res ){
   var id = req.body.id,
       fileName =  req.files.file && req.files.file.name? req.files.file.name:"";
 
+      //use iframe uploader for ie.
+      res.set('Content-Type', 'text/plain');
       res.send({success:true,id:id,fileName:fileName});
 });
 
-app.listen(3000);
+app.listen(8000);
 
 
