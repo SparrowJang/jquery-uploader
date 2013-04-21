@@ -18,6 +18,6 @@ app.post('/upload',function( req, res ){
       res.send({success:true,id:id,fileName:fileName});
 });
 
-app.listen(8000);
+app.listen(3000);
 
 
