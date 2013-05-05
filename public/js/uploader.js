@@ -182,9 +182,13 @@
       */
       onload_:function(){
 
-        var iframe = this.$iframe_.get(0),result;
+        var iframe = this.$iframe_.get(0),result,$body;
         doc = iframe.contentWindow.document;
-        result = $( doc.body ).find("pre").html();
+        $body = $( doc.body );
+        if( $body.find("pre").length )
+          result = $body.find("pre").html();
+        else
+          result = $body.html();
         this.settings_.success && this.settings_.success( result );
         this.$iframe_.detach()
                      .off( "load" );
