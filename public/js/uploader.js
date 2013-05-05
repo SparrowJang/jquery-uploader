@@ -133,7 +133,7 @@
               if( isForm ){
   
                 url = $this.attr( "action" );
-                $( "input[type!='submit'],select", $this ).upload( url , opts );
+                $( "input[type!='submit'],select,textarea", $this ).upload( url , opts );
               }
   
         });
