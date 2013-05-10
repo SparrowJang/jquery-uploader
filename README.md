@@ -17,7 +17,7 @@ The method only submit one form now.
 
 	$("form").uploadForm({
 
-	  //5M
+	  //5M ( default 2M )
  	  fileSize:1024*1024*5,
 
 	  success:function( text ){
