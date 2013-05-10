@@ -16,11 +16,17 @@ The method only submit one form now.
 
 
 	$("form").uploadForm({
+
+	  //5M
+ 	  fileSize:1024*1024*5,
+
 	  success:function( text ){
 	    console.log( "response from server:" + text );
 	  },
-	  fail:function(){
+	  fail:function( status, ERROR ){
 	
+		if( status.error_code == ERROR.CODES.FILE_SIZE ) alert( "file size > max file size" );
+
 	  },
 	  progress:function( ev ){
 	    var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
