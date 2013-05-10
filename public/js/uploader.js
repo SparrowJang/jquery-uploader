@@ -69,7 +69,7 @@
 
         var maxFileSize = this.settings_.fileSize;
 
-        if( file instanceof File && file.size > maxFileSize ) return false;
+        if( file instanceof File && file.size >= maxFileSize ) return false;
 
         return true;
       },
