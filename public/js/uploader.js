@@ -15,11 +15,13 @@
   
       this.xhr_.onreadystatechange = $.proxy( this.onreadystatechange_, this );
   
-      this.settings_ = {};
-  
     };
   
     AjaxUploader.prototype = {
+
+      settings_:{
+        fileSize:1024*1024*2 //2m
+      },
   
       /**
       * @private
@@ -36,9 +38,14 @@
       onreadystatechange_:function( ev ){
   
         if(this.xhr_.readyState == 4){
+
+          var status = {
+            error_code:this.ERROR.CODES.HTTP_ERROR,
+            error_message:this.ERROR.MESSAGES.HTTP_ERROR
+          };
    
           this.xhr_.status == 200 ? this.settings_.success && this.settings_.success( this.xhr_.responseText ):
-                                    this.settings_.fail && this.settings_.fail();
+                                    this.settings_.fail && this.settings_.fail( status, this.ERROR );
         }
   
       },
@@ -53,6 +60,57 @@
         this.xhr_.open('POST', url, true);
         this.xhr_.send(data);
       },
+
+      /**
+      * @private
+      * @param {File} file
+      */
+      validateFileSize_:function( file ){
+
+        var maxFileSize = this.settings_.fileSize;
+
+        if( file instanceof File && file.size > maxFileSize ) return false;
+
+        return true;
+      },
+
+      ERROR:{
+        CODES:{
+          FILE_SIZE:1,
+          HTTP_ERROR:2
+        },
+        MESSAGES:{
+          FILE_SIZE:"file must be less than max file size.",
+          HTTP_ERROR:"request status is error."
+        }
+      },
+
+      /**
+      * @param {Object} data
+      * @type boolean
+      */
+      validate:function( data ){
+
+        for( var index in data ){
+
+          var val = data[index].value,status;
+
+          if( this.validateFileSize_( val ) == false ){
+
+            status = {
+              error_code:this.ERROR.CODES.FILE_SIZE,
+              error_message:this.ERROR.MESSAGES.FILE_SIZE
+            };
+
+            this.settings_.fail && this.settings_.fail( status, this.ERROR );
+
+            return false;
+          }
+
+        }
+
+        return true;
+      },
   
       /**
       * @private
@@ -61,11 +119,13 @@
       */
       createFormData_:function( data ){
   
-        var formData = new FormData();
+        var formData = new FormData(),
+            _this = this;
   
         $.each(data,function( index, field ){
           
           formData.append( field.name, field.value );
+
         });
   
         return formData;
@@ -77,6 +137,7 @@
       * @param {functiuon} settings.success
       * @param {functiuon} settings.fail
       * @param {functiuon} settings.progress
+      * @param {function} settings.fileSize
       * @example
         uploader.send( {url:"/upload",success:function(){}} )
       */
@@ -84,7 +145,11 @@
   
         $.extend( this.settings_ , settings );
   
+        //validate fail
+        if( !this.validate( settings.fields ) ) return;
+
         var formData = this.createFormData_( settings.fields );
+
         this.sendToServer_( settings.url, formData );
       }
   
