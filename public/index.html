@@ -35,6 +35,9 @@
       var $progress = $("#progress").css("width","0%");
       //$( "input[type!='submit'],select", $(this) ).upload( "/upload",{
       $(this).uploadForm({
+        //limit file size <= 3M
+        fileSize:1024 * 1024 * 3,
+
         success:function( text ){
 
           var result = $.parseJSON( text );
@@ -43,10 +46,11 @@
           console.log( "id:" + result.id + " fileName:" + result.fileName + " success:" + result.success );
           alert("success");
         },
-        fail:function(){
+        fail:function( status, ERROR ){
           $progress.css( "width", "0%" );
-          console.log( "fail" );
-          alert("fail");
+
+          console.log( status );
+          alert( status.error_message );
         },
         progress:function( ev ){
           var ratio = (ev.loaded/ev.total*100).toFixed(2) + "%";
