@@ -193,12 +193,15 @@
   
           var $this = $(this),
               url,
-              isForm = $this.get(0).tagName.toLowerCase() == "form";
+              isForm = $this.get(0).tagName.toLowerCase() == "form",
+              selector;
   
               if( isForm ){
   
                 url = $this.attr( "action" );
-                $( "input[type!='submit'],select,textarea", $this ).upload( url , opts );
+                selector = "input[type!='submit'][type!='checkbox'][type!='radio'],input[type='radio']:checked,input[type='checkbox']:checked";
+                selector = selector + ",select,textarea";
+                $( selector, $this ).upload( url , opts );
               }
   
         });
