@@ -14,6 +14,7 @@ If you use IE7、IE8 and IE9, they will use iframe uploader to replace.
 	firefox
 	chrome
 
+####code:
 
 	$("form").uploadForm({
 
