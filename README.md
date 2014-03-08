@@ -10,9 +10,9 @@ The method only submit one form now.
 ####The method support:
 If you use IE7、IE8 and IE9, they will use iframe uploader to replace.
 
-	IE7+
-	firefox
-	chrome
+* IE7+
+* firefox
+* chrome
 
 ####code:
 
@@ -48,9 +48,9 @@ If you use IE7~9,they only support success parameter:
 
 ####The method support:
 
-	IE10+
-	firefox
-	chrome
+* IE10+
+* firefox
+* chrome
 
 ####html:
 
