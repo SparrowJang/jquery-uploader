@@ -251,7 +251,7 @@
       onload_:function(){
 
         var iframe = this.$iframe_.get(0),result,$body;
-        doc = iframe.contentWindow.document;
+        var doc = iframe.contentWindow.document;
         $body = $( doc.body );
         if( $body.find("pre").length )
           result = $body.find("pre").html();
