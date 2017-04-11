@@ -1,21 +1,21 @@
-##Introduction
+## Introduction
 
 This is ajax uploader,it support ie7+、chrome、firefox...
 
-##Usage
+## Usage
 
 
-###Send a form by ajax:
+### Send a form by ajax:
 The method only submit one form now.
 
-####The method support:
+#### The method support:
 If you use IE7、IE8 and IE9, they will use iframe uploader to replace.
 
 * IE7+
 * firefox
 * chrome
 
-####code:
+#### code:
 
 ```js
 $("form").uploadForm({
@@ -48,17 +48,17 @@ $("form").uploadForm({
 });
 ```
 
-###Send many fields:
+### Send many fields:
 
 You can use `upload` method to send fields to server by ajax.
 
-####The method support:
+#### The method support:
 
 * IE10+
 * firefox
 * chrome
 
-####html:
+#### html:
 
 ```html
 <form action="/upload" method="post" enctype="multipart/form-data">
@@ -69,7 +69,7 @@ You can use `upload` method to send fields to server by ajax.
 </form>
 ```
 
-####code:
+#### code:
 
 ```js
 $( "input[name='file'],input[name='id']" ).upload( "/upload",{
@@ -85,12 +85,12 @@ $( "input[name='file'],input[name='id']" ).upload( "/upload",{
 ```
 
 
-##Dependency
+## Dependency
 
 * [jQuery](https://github.com/jquery/jquery)
 
 
-##Run example server
+## Run example server
 
 ```
 npm install express
